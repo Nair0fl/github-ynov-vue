@@ -25,11 +25,13 @@
     <script>
         function test() {
             $('#datepicker').datepicker({
-                uiLibrary: 'bootstrap4'
+                uiLibrary: 'bootstrap4',
+                dateFormat: 'mm:dd:yyyy'
             });
 
             $('#datepicker2').datepicker({
-                uiLibrary: 'bootstrap4'
+                uiLibrary: 'bootstrap4',
+                dateFormat: 'mm:dd:yyyy'
             });
         }  
     </script>
@@ -46,7 +48,7 @@
                         <option v-for="projet in projets">{{projet}}</option>
                     </select>
                 </div>
-                <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
                     <div class='input-group date' id='datetimepicker'>
                         <label class="col-12" for="datepicker1">Date Début</label>
                         <input id="datepicker" v-model="datedeb" class="col-12" />
@@ -54,10 +56,9 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
                     <label class="col-12" for="datepicker2">Date fin</label>
                     <input id="datepicker2" v-model="datefin" class="col-12" />
-                    {{datedeb}}-{{datefin}}
                 </div>
                 <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
                         <label class="col-12" for="ChooseProjet">Projet</label>
