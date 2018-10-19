@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet " type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script>
+        function test() {
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+
+            $('#datepicker2').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+        }  
+    </script>
+    <title>Hello, world!</title>
+</head>
+
+<body onload="test()">
+    <div class="container">
+        <div class="row">
+            <div class="row ">
+                    <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                            <label class="col-12" for="ChooseProjet">Projet</label>
+                    <select class="selectpicker col-12" v-model="selectedProjet" id="ChooseProjet" data-live-search="true">
+                        <option v-for="projet in projets">{{projet}}</option>
+                    </select>
+                </div>
+                <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class='input-group date' id='datetimepicker'>
+                        <label class="col-12" for="datepicker1">Date Début</label>
+                        <input id="datepicker" v-model="datedeb" class="col-12" />
+
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                    <label class="col-12" for="datepicker2">Date fin</label>
+                    <input id="datepicker2" v-model="datefin" class="col-12" />
+                    {{datedeb}}-{{datefin}}
+                </div>
+                <div class="form-group  col-lg-3 col-xl-3 col-md-3 col-sm-6 col-xs-6">
+                        <label class="col-12" for="ChooseProjet">Projet</label>
+                    <select class="selectpicker col-12" v-model="selectedCompte" id="ChooseProjet" multiple data-live-search="true">
+                        <option v-for="compte in comptes" :value="compte">{{compte}}</option>
+                    </select>
+                </div>
+            </div>
+            <button v-on:click="sub" class="btn btn-primary col-12">Submit</button>
+        </div>
+        <div class="row " id="resultats">
+                <div class="card col-12"  v-for="commit in commits">
+                        <div class="card-header">
+                                <a class="col-6 align-baseline">{{commit.committer.login}}</a>
+                                <a hreh="#" class="col-6" style="text-align: right">{{commit.html_url.split('/')[0]}}//{{commit.html_url.split('/')[2]}}/{{commit.html_url.split('/')[3]}}/{{commit.html_url.split('/')[4]}}</a>
+                              </div>
+                        <div class="card-body">
+                          
+                          <a href="#" v-on:click="card(commit.author.login)" class="card-link">Commit</a>
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script><div class="card-header">
+  </div>
+
+
+</body>
+
+</html>
