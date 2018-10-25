@@ -1,6 +1,8 @@
-
 new Vue({
   el: '.container',
+  components: {
+  	vuejsDatepicker
+  },
   data () {
     return {
       commits: [],
@@ -14,34 +16,26 @@ new Vue({
     }
   },
   methods: {
-    sub: function (event) {
+    sub: function () {
       this.commits=[]
-      datedeb=$("#datepicker").val().replace("/",":");
-      datedeb=datedeb.replace("/",":")
-      datefin=$("#datepicker2").val().replace("/",":");
-      datefin=datefin.replace("/",":");
-      console.log(datefin)
+      this.datedeb=moment(this.datedeb).format("YYYY-MM-DD")
+      this.datefin=moment(this.datefin).format("YYYY-MM-DD")
       date=""
-      if(datedeb!==""){
-        date+="&since="+datedeb
+      if(this.datedeb!==""){
+        date+="&since="+this.datedeb
       }
-      if(datefin!==""){
-        date+="&until="+datefin
-
+      if(this.datefin!==""){
+        date+="&until="+this.datefin
       }
-      for(compte in this.selectedCompte){
-        axios
-        .get('https://api.github.com/repos/'+this.selectedCompte[compte]+'/'+this.selectedProjet+'/commits?access_token=4f4e03624a7acd7e78166b73b47fc9b8ca2de975'+date)
-        .then(response => (this.commits=this.commits.concat(response.data)))
-      }
-      
+        for(compte in this.selectedCompte){
+          axios
+          .get('https://api.github.com/repos/'+this.selectedCompte[compte]+'/'+this.selectedProjet+'/commits?access_token=4f4e03624a7acd7e78166b73b47fc9b8ca2de975'+date)
+          .then(response => (this.commits=this.commits.concat(response.data)))}
     },
     card:function(username,repos){
         axios
         .get('https://api.github.com/repos/'+username+'/'+this.selectedProjet+'/readme?access_token=4f4e03624a7acd7e78166b73b47fc9b8ca2de975')
         .then(response => (this.commits=this.commits.concat(response.data)))
-      
-      
     }
   }
 })
